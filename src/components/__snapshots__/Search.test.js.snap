@@ -2,7 +2,7 @@
 
 exports[`<Search> renders as expected without crashing and matches snapshot 1`] = `
 <section
-  className="Search"
+  className="search"
 >
   <section
     className="field"

@@ -1,4 +1,6 @@
 import React from 'react';
+import Repo from './Repo';
+import NoReposFound from './No-repos-found';
 
 class Search extends React.Component {
   state = {
@@ -20,10 +22,21 @@ class Search extends React.Component {
             </span>
           </p>
           <button className="button is-medium is-info is-rounded" onClick={() => this.repoSearch(this.state.input)}>Search</button>
-          {repoCount === 0 ?
-            <NoReposFound />
+          {repoCount !== null ?
+            repoCount > 0 ?
+              <section className="reposRendered">
+                {repos.map((repo, i) => {
+                  return (
+                    <section className="repoMap" key={i}>
+                      <Repo repo={repo}/>
+                    </section>
+                  );
+                })}
+              </section>
+              :
+              <NoReposFound />
             :
-            <Repos />
+            null
           }
         </section>
       </section>
