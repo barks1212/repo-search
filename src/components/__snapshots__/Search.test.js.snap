@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search> renders as expected without crashing and matches snapshot 1`] = `
+<section
+  className="Search"
+>
+  <section
+    className="field"
+  >
+    <p
+      className="control has-icons-left"
+    >
+      <input
+        className="input is-medium is-rounded is-info"
+        onChange={[Function]}
+        placeholder="eg: Hangman"
+        type="text"
+        value=""
+      />
+      <span
+        className="icon is-small is-left"
+      >
+        <i
+          className="fas fa-search"
+        />
+      </span>
+    </p>
+    <button
+      className="button is-medium is-info is-rounded"
+      onClick={[Function]}
+    >
+      Search
+    </button>
+  </section>
+</section>
+`;
