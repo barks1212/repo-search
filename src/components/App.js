@@ -6,7 +6,7 @@ import './App.css';
 class App extends React.Component {
   render() {
     return (
-      <section className="main">
+      <section className="container is-fluid" id="main">
         <Header />
         <Search />
       </section>

@@ -3,42 +3,30 @@ import Moment from 'moment';
 import RepoOverlay from './Repo-overlay';
 import PT from 'prop-types';
 
-class Repo extends React.Component {
-  state = {
-    overlayOn: false,
-  }
 
-  render() {
-    return (
-      <section className="repo">
-        <section className="card has-text-centered notification is-danger" onClick={() => this.overlayHandler()}>
-          <section className="container" id="cardHeader">
-            <h2 className="title">{`${this.props.repo.name.slice(0,1).toUpperCase()}${this.props.repo.name.substring(1)}`}</h2>
-          </section>
-          <section className="cardPic">
-            <img src={this.props.repo.owner.avatar_url} alt="" />
-          </section>
-          <section className="container" id="cardFooter">
-            <span className="nameAndDate"> <h3 className="subtitle">{this.props.repo.owner.login}</h3> <p className="has-text-weight-light">{Moment(this.props.repo.created_at).fromNow()}</p> </span>
-          </section>
-        </section>
-        {this.state.overlayOn ? <RepoOverlay overlayOn={this.state.overlayOn} repo={this.props.repo} overlayHandler={this.overlayHandler} />
-          : null}
-      </section>
-    );
-  }
-
-  overlayHandler = () => {
-    !this.state.overlayOn ? this.setState({ overlayOn: true })
-      :
-      this.setState({ overlayOn: false });
-  }
-
-}
-
+const Repo = (props) => (
+  <section className="repoMain">
+    <section className="tile is-parent has-text-centered" id="mainTile">
+      <article className="tile is-child box notification is-danger" onClick={() => props.overlayHandler()}>
+        <p className="title is-size-5-tablet" id="tileHeader">
+          {`${props.repo.name.slice(0, 1).toUpperCase()}${props.repo.name.substring(1)}`}
+        </p>
+        <figure className="image is-4by3" id="tilePic">
+          <img src={props.repo.owner.avatar_url} alt="" />
+        </figure>
+        <p className="title is-size-6 is-size-7-tablet">{props.repo.owner.login}</p>
+        <p className="subtitle is-size-7 has-text-weight-light">{Moment(props.repo.created_at).fromNow()}</p>
+      </article>
+      {props.overlayOn ? <RepoOverlay overlayOn={props.overlayOn} repo={props.repo} overlayHandler={props.overlayHandler} />
+        : null}
+    </section>
+  </section>
+);
 
 Repo.propTypes = {
   repo: PT.object.isRequired,
+  overlayHandler: PT.func.isRequired,
+  overlayOn: PT.bool
 };
 
 export default Repo;
