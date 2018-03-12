@@ -1,12 +1,14 @@
 import React from 'react';
 import Repo from './Repo';
 import NoReposFound from './No-repos-found';
+import Sorter from './Sorter';
 
 class Search extends React.Component {
   state = {
     input: '',
     repos: null,
-    repoCount: null
+    repoCount: null,
+    sort: null
   };
 
   render() {
@@ -25,6 +27,7 @@ class Search extends React.Component {
           {repoCount !== null ?
             repoCount > 0 ?
               <section className="reposRendered">
+                <Sorter sorter={this.sorter} repos={this.state.repos}/>
                 {repos.map((repo, i) => {
                   return (
                     <section className="repoMap" key={i}>
@@ -59,10 +62,44 @@ class Search extends React.Component {
         this.setState({
           repos: top20,
           input: '',
-          repoCount: repos.total_count
+          repoCount: repos.total_count,
+          sort: null
         });
       });
   };
+
+  sorter = (order, repoList) => {
+    this.setState({sort: order});
+
+    if (order === 'newest') {
+      let newRepos = repoList.sort((a, b) => {
+        return Date.parse(b.created_at) - Date.parse(a.created_at);
+      });
+      this.setState({repos: newRepos});
+    }
+
+    if (order === 'oldest') {
+      let oldRepos = repoList.sort((a, b) => {
+        return Date.parse(a.created_at) - Date.parse(b.created_at);
+      });
+      this.setState({repos: oldRepos});
+    }
+
+    if (order === 'mostForks') {
+      let mostForks = repoList.sort((a, b) => {
+        return b.forks_count - a.forks_count;
+      });
+      this.setState({repos: mostForks});
+    }
+
+    if (order === 'leastForks') {
+      let leastForks = repoList.sort((a,b) => {
+        return a.forks_count - b.forks_count;
+      });
+      this.setState({repos: leastForks});
+    }
+
+  }
 }
 
 export default Search;
