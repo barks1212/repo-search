@@ -31,7 +31,7 @@ Navigate to your favoured directory and clone the repository using this link:
 
 Change into the project directory with:
 
-```cd repo-search``
+```cd repo-search```
 
 Install all project dependancies using:
 
@@ -65,13 +65,19 @@ I would also like to add pagination at some stage as well as find a way to decod
 
 ### Repo list on mobile
 
+
+
 ![Screenshot](/public/screenshots/repos-desktop.png "Repo list on desktop")
 
 ### Repo list on desktop
 
+
+
 ![Screenshot](/public/screenshots/overlay-mobile.png "Overlay on mobile")
 
 ### Overlay on mobile
+
+
 
 ![Screenshot](/public/screenshots/overlay-desktop.png "Overlay on desktop")
 
