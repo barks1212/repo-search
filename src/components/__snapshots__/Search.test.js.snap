@@ -2,17 +2,20 @@
 
 exports[`<Search> renders as expected without crashing and matches snapshot 1`] = `
 <section
-  className="search"
+  className="search has-text-centered-mobile"
 >
   <section
     className="field"
+    id="searchControls"
   >
     <p
       className="control has-icons-left"
+      id="searchBar"
     >
       <input
-        className="input is-medium is-rounded is-info"
+        className="input is-rounded is-info"
         onChange={[Function]}
+        onKeyPress={[Function]}
         placeholder="eg: Hangman"
         type="text"
         value=""
@@ -26,7 +29,8 @@ exports[`<Search> renders as expected without crashing and matches snapshot 1`] 
       </span>
     </p>
     <button
-      className="button is-medium is-info is-rounded"
+      className="button is-info is-rounded"
+      id="searchButton"
       onClick={[Function]}
     >
       Search

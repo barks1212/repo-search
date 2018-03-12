@@ -10,6 +10,7 @@ exports[`<NoReposFound> renders as expected without crashing and matches snapsho
   >
     <h2
       className="title"
+      id="sorry"
     >
       Sorry!
     </h2>
